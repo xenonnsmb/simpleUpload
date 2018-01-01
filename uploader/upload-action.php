@@ -7,7 +7,7 @@ if ($db->connect_error) {
 $basename = basename($_FILES["fileToUpload"]["name"]);
 $target = $basename;
 $imageFileType = pathinfo($target,PATHINFO_EXTENSION);
-
+$rootdir = constant("rootdir");
 if (file_exists($target)) {
   die("A file by that name already exists.");
 }
@@ -21,7 +21,7 @@ if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target)) {
         $targetid = $idrow["id"] + 1;
         $stmt->bind_param("is", $targetid, $basename);
         if ($stmt->execute()) {
-          echo("File uploaded.");
+          echo("File uploaded.<script>window.location.href = 'http://' + window.location.hostname + '$rootdir' + '/uploader/';</script>");
         }else{
           die("There was a database error.");
         }
