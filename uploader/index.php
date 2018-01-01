@@ -1,3 +1,10 @@
+<?php
+include 'config.php';
+$db = getDb();
+if ($db->connect_error) {
+  die("Error connecting to the database. Are you sure you have the right username, password, hostname, and database in config.php?");
+}
+?>
 <!DOCTYPE html>
 <html><head><title>simpleUpload</title></head>
 <body><h1>simpleUpload</h1><p>
@@ -7,8 +14,6 @@
       <input type="submit" value="Upload Image" name="submit">
   </form>
 <?php
-include 'config.php';
-$db = getDb();
 $stmt = $db->query("SELECT * FROM `uploads`");
 while ($row = $stmt->fetch_assoc()) {
   $getpath = constant("rootdir");
