@@ -26,6 +26,6 @@ if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target)) {
           die("There was a database error.");
         }
       }else{
-        die("There was an unknown error.");
+        die("There was an unknown error. Are you sure your webserver account (probably nginx or www-data) has write permissions in the /uploader folder?");
       }
  ?>
