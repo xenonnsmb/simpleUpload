@@ -1,7 +1,7 @@
 <?php
+// Add your database host, username, password, and database name.
 function getDb() {
-  $conn = new mysqli("localhost", "username", "password", "uploader");
-  return $conn;
+    return new mysqli("localhost", "username", "password", "database");
 }
-define("rootdir", "/phpuploader"); // Path to directory with get.php and /uploader in it
+define("rootdir", "/phpuploader"); // Replace "/phpuploader" with the path to the directory with get.php and /uploader in it
  ?>
